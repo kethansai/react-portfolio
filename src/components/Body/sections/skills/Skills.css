@@ -1,0 +1,11 @@
+.pbar{
+    animation: anim 2s ease-in;
+}
+@keyframes anim{
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: var(width);
+    }
+}
