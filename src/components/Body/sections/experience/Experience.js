@@ -11,14 +11,14 @@ const Experience = () => {
   const [cert, setCert] = useState(false);
   return (
     <div id='experience'>
-      <div className='bg-white md:bg-cyan-900 text-white py-12 px-4 md:px-52'>
+      <div className='bg-gray-100 md:bg-cyan-900 text-white pt-20 py-12 px-4 md:px-52'>
         <div className='text-4xl font-bold mb-8 uppercase text-cyan-800 md:text-white text-center'>Experience</div>
         <div className='grid grid-cols-5 md:grid-cols-9'>
 
           {/* Stack 1 - Tata Consultancy Services */}
           <div className='col-span-4 bg-cyan-800 mt-3 md:mt-0 md:bg-white shadow-xl rounded-xl p-6'>
             <div className='flex items-center'>
-              <img src={tcsLogo} className=' w-12 h-8 md:w-16 md:h-12 ml-1 mr-2' />
+              <img src={tcsLogo} alt='Tcs Logo' className='w-12 h-8 md:w-16 md:h-12 ml-1 mr-2' />
               <div className='w-11/12'>
                 <h3 className='text-xl font-bold md:text-cyan-800 text-white'>Tata Consultancy Services</h3>
                 <p className='text-sm font-bold md:text-cyan-800 text-white'> Assistant System Engineer - Developer</p>
@@ -51,13 +51,13 @@ const Experience = () => {
           </div>
           <div className='col-span-4 bg-cyan-800 mt-3 md:mt-0 md:bg-white shadow-xl rounded-xl p-6'>
             <div className='relative flex items-center'>
-              <img src={gfLogo} className='w-16 h-12' />
+              <img src={gfLogo} alt='GF Logo' className='w-16 h-12' />
               <div>
                 <h3 className='text-xl font-bold md:text-cyan-800 text-white'>GlobalFoundries - Internship</h3>
                 <p className='text-sm font-bold md:text-cyan-800 text-white'> Java Developer</p>
                 <p className='text-xs font-bold md:text-cyan-800 text-white'> (Sept 2020 - Apr 2021) - 8 Months</p>
               </div>
-              <img src={Certificate} className='cursor-pointer absolute w-10 h-10 top-8 md:top-2 right-2' onClick={() => { setFlag(true); setCert(GFCertificate) }} />
+              <img src={Certificate} alt='Certificate icon' className='cursor-pointer absolute w-10 h-10 top-8 md:top-2 right-2' onClick={() => { setFlag(true); setCert(GFCertificate) }} />
             </div>
             <ul className='text-xs list-disc font-bold mx-4 mt-3 text-gray-200 mt-1 md:text-cyan-800'>
               <li>worked for Wafer distribution system application project.</li>
@@ -74,7 +74,7 @@ const Experience = () => {
                 <p className='text-sm font-bold md:text-cyan-800 text-white'> Assistant Engineer</p>
                 <p className='text-xs font-bold md:text-cyan-800 text-white'> (MAR 2020 - MAY 2020) - 3 Months</p>
               </div>
-              <img src={Certificate} className='cursor-pointer absolute w-10 h-10 top-8 md:top-2 right-2' onClick={() => { setFlag(true); setCert(SSCertificate) }} />
+              <img src={Certificate} alt='Certificate icon' className='cursor-pointer absolute w-10 h-10 top-8 md:top-2 right-2' onClick={() => { setFlag(true); setCert(SSCertificate) }} />
             </div>
               <ul className='text-xs list-disc font-bold mx-4 mt-3 text-gray-200 mt-1 md:text-cyan-800'>
               <li>Second hand car selling application, under this project worked as component designer.</li>

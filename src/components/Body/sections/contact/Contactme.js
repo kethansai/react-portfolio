@@ -1,8 +1,9 @@
 import React, { useRef, useState} from 'react'
 import emailjs from '@emailjs/browser';
 import './Contactme.css'
-import { ImPhone, ImWhatsapp, ImFacebook, ImGithub, ImLocation2 } from 'react-icons/im'
+import { ImPhone, ImWhatsapp, ImFacebook, ImLocation2 } from 'react-icons/im'
 import { SiGmail } from 'react-icons/si'
+import { FaLinkedinIn } from 'react-icons/fa'
 const Contactme = () => {
     const form = useRef();
     const publickKey = "ur8U7qvUqrvEdqVzw";
@@ -48,11 +49,11 @@ const Contactme = () => {
       <div className='flex pt-10 justify-center items-center md:bg-cyan-700 mx-4 md:mx-0 '>
             <div className='flex flex-col md:flex-row justify-between overflow-hidden md:overflow-visible
                                 space-y-6 bg-cyan-700 md:bg-none w-full max-w-4xl p-8 rounded-xl md:rounded-none shadow-lg md:shadow-none text-white'>
-              <div className='flex flex-col justify-between'>
+              <div className='flex flex-col justify-around'>
                   <div>
                       <h1 className='font-bold text-4xl tracking-wider hover:underline underline-offset-8'>Contact Me</h1>
                   </div>
-                  <div className='flex mt-12 md:mt-20 flex-col space-y-4'>
+                  <div className='flex mt-12 md:mt-0 flex-col space-y-4'>
                       <div className='inline-flex space-x-2 items-center'>
                           <ImPhone className='text-xl text-teal-300' />
                           <div className='text-cyan-100 text-sm '>+91 79892 16155</div>
@@ -66,7 +67,7 @@ const Contactme = () => {
                           <div className='text-cyan-100 text-sm '>10-33, Nallapareddigari Palli, Bhakarapeta,<br/> Chittoor District, Andhra Pradesh - 517194</div>
                       </div>
                   </div>
-                    <ul className='m-auto mt-12 md:mt-20 flex'>
+                    <ul className='md:hidden m-auto mt-12 md:mt-20 flex'>
                         <li className='mx-3'>
                             <a target="_blank" href='https://www.facebook.com/kethan.sai.735/'>
                                 <ImFacebook className='text-3xl hover:text-sky-400 transition ease-in-out duration-200 hover:-translate-y-1 hover:scale-110' />
@@ -78,8 +79,8 @@ const Contactme = () => {
                             </a>
                         </li>
                         <li className='mx-3'>
-                            <a target="_blank" href='https://github.com/kethansai'>
-                                <ImGithub className='text-3xl transition ease-in-out duration-200 hover:-translate-y-1 hover:scale-110' />
+                            <a target="_blank" href='https://www.linkedin.com/in/kethan-vemuri-079496144/'>
+                                <FaLinkedinIn className='text-3xl hover:text-blue-400 transition ease-in-out duration-200 hover:-translate-y-1 hover:scale-110' />
                             </a>
                         </li>
                     </ul>

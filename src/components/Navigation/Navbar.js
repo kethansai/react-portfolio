@@ -6,6 +6,7 @@ import { HiOutlineOfficeBuilding, HiOutlineMenu } from 'react-icons/hi'
 import { AiFillSafetyCertificate } from 'react-icons/ai'
 import { ImCross } from 'react-icons/im'
 import logo from '../../asset/logos/logo-king-white-cropped.png'
+
 const Navbar = () => {
   let [flag, setflag] = useState(false);
   const toggleFlag = () => {
@@ -17,17 +18,15 @@ const Navbar = () => {
     {  href: "#skills", text: "Skills" },
     {  href: "#education", text: "Education" },
     {  href: "#projects", text: "Projects" },
-    {  href: "#internships", text: "Internships" },
     {  href: "#contactme", text: "Contact Me" },
     {  href: "mailto:kethansai77@gmail.com", text: "Hire Me" },
   ];
   const desktopMenu = [
-    { href: "#home", text: "Home", icon: <FaHome className='text-xl mt-2.5 mx-1' />},
+    { href: "#home", text: "Home", icon: <FaHome className='text-xl mt-2.5 mx-1'   />},
     { href: "#experience", text: "Experience", icon: <FaBriefcase className='text-xl mt-2.5 mx-1' />},
     { href: "#skills", text: "Skills", icon: <AiFillSafetyCertificate className='text-xl mt-2.5 mx-1' /> },
     { href: "#education", text: "Education", icon: <FaUserGraduate className='text-xl mt-2.5 mx-1' />},
     { href: "#projects", text: "Projects", icon: <RiFileListFill className='text-xl mt-2.5 mx-1' />},
-    { href: "#internships", text: "Internships", icon: <HiOutlineOfficeBuilding className='text-xl mt-2.5 mx-1' />},
     { href: "#contactme", text: "Contact Me", icon: <RiMailAddFill className='text-xl mt-2.5 mx-1' />},
     { href: "mailto:kethansai77@gmail.com", text: "Hire Me", icon: <FaCommentDollar className='text-xl mt-2.5 mx-1' />},
   ];

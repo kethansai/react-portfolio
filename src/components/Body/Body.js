@@ -7,8 +7,8 @@ import Skills from './sections/skills/Skills'
 const Body = () => {
   return (
     <div className='antialiased min-h-screen pt-16 bg-gray-100'>
-      <Home/>
-      <Experience/>
+      <Home />
+      <Experience />
       <Skills />
       <Education/>
       <Contactme/>

@@ -5,7 +5,7 @@ import zphsLogo from '../../../../asset/logos/school-logo.png'
 const Education = () => {
   return (
       <div id="education">
-          <div className='md:bg-cyan-800 py-12 md:px-44'>
+          <div className='md:bg-cyan-800 pt-20 py-12 md:px-44'>
               <h2 className='uppercase text-3xl text-center text-cyan-800 md:text-white font-bold'>Education</h2>
               <div className='flex py-4 flex-col md:flex-row mt-6 space-y-6 md:space-y-0 md:space-x-6 space-x-0 justify-center items-center '>
                   <div className='relative w-9/12 md:w-1/3'>

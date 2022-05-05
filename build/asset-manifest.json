@@ -1,8 +1,7 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.80fab270.css",
-    "main.js": "/portfolio/static/js/main.92c7be03.js",
-    "static/js/787.1ed0c42c.chunk.js": "/portfolio/static/js/787.1ed0c42c.chunk.js",
+    "main.css": "/portfolio/static/css/main.dfe81d78.css",
+    "main.js": "/portfolio/static/js/main.adc072e0.js",
     "static/media/school-logo.png": "/portfolio/static/media/school-logo.15ab4d3651d0ba38ed27.png",
     "static/media/SS-certificate.jpg": "/portfolio/static/media/SS-certificate.402305619cb00fe1a27e.jpg",
     "static/media/GF_Experience-certificate.jpg": "/portfolio/static/media/GF_Experience-certificate.04833d0a5197135353a3.jpg",
@@ -12,12 +11,11 @@
     "static/media/gf-logo.png": "/portfolio/static/media/gf-logo.8afd9853cd81854c5bde.png",
     "static/media/logo-king-white-cropped.png": "/portfolio/static/media/logo-king-white-cropped.56a2fc7c7f5ee917de1b.png",
     "index.html": "/portfolio/index.html",
-    "main.80fab270.css.map": "/portfolio/static/css/main.80fab270.css.map",
-    "main.92c7be03.js.map": "/portfolio/static/js/main.92c7be03.js.map",
-    "787.1ed0c42c.chunk.js.map": "/portfolio/static/js/787.1ed0c42c.chunk.js.map"
+    "main.dfe81d78.css.map": "/portfolio/static/css/main.dfe81d78.css.map",
+    "main.adc072e0.js.map": "/portfolio/static/js/main.adc072e0.js.map"
   },
   "entrypoints": [
-    "static/css/main.80fab270.css",
-    "static/js/main.92c7be03.js"
+    "static/css/main.dfe81d78.css",
+    "static/js/main.adc072e0.js"
   ]
 }
