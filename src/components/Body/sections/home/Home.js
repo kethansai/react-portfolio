@@ -1,15 +1,20 @@
 import React from 'react'
 import { ImWhatsapp, ImFacebook } from 'react-icons/im'
 import { FaLinkedinIn } from 'react-icons/fa'
+import profilePic from '../../../../asset/profilePic.JPG'
 
 const Home = () => {
   return (
     <div id='home'>
-          <div className='max-w-2xl pt-20 px-4 md:px-0 m-auto py-12'>
+          <div className='max-w-4xl pt-20 px-4 md:px-0 m-auto py-12'>
             <div className='relative'>
               <div className='absolute z-0 inset-0 bg-gradient-to-r from-cyan-400 to-light-blue-500 shadow-lg transform -skew-y-6 rounded-md'>
               </div>
-              <div className='relative card m-2 p-12 bg-white md:h-auto rounded-xl shadow-2xl'>
+              <div className='flex flex-col space-y-6 md:flex-row items-center justify-center relative card m-2 p-12 pt-24 bg-slate-200 md:h-auto rounded-xl shadow-2xl'>
+                  <div className='order-1 md:order-2 w-full'>
+                    <img src={profilePic} className='rounded-full w-56 h-56 md:h-1/2  m-auto shadow-2xl p-3 bg-white'/>
+                  </div>
+                  <div className='order-2 md:order-1 w-full'>
                     <div className='text-cyan-800 text-3xl font-bold text-center'>
                         Kethan Vemuri
                     </div>
@@ -36,7 +41,8 @@ const Home = () => {
                             </a>
                         </li>
                     </ul>
-                </div>
+                  </div>
+              </div>
             </div>
           </div>
     </div>
