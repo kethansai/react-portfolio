@@ -6,7 +6,7 @@ import Home from './sections/home/Home'
 import Skills from './sections/skills/Skills'
 const Body = () => {
   return (
-    <div className='antialiased min-h-screen pt-16 bg-gray-100'>
+    <div className='antialiased min-h-screen pt-16 bg-gray-100 bg-pattern'>
       <Home />
       <Experience />
       <Skills />

@@ -21,6 +21,15 @@ module.exports = {
       zIndex: {
         '100': '100',
         '1000':'1000'
+      },
+      backgroundImage: {
+        "pattern":" url('/src/asset/dust_texture.svg')"
+      },
+      animation: {
+        
+      },
+      keyframes: {
+        
       }
     },
   },

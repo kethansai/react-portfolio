@@ -35,7 +35,7 @@ const Navbar = () => {
 
       {/* Desktop Menu */}
 
-      <div className='flex relative items-center justify-between uppercase card shadow-xl bg-cyan-700 text-white py-4 md:py-3 px-12 md:px-12 leading-10'>
+      <div className='flex relative items-center justify-between uppercase card shadow-xl bg-gray-900 text-white py-4 md:py-3 px-12 md:px-12 leading-10'>
         {/* <div className='Logo item text-4xl md:text-xl underline-offset-8 transition ease-in-out duration-200 font-bold 
               hover:text-cyan-300 hover:underline hover:-translate-y-1 hover:scale-110'>
             KSR

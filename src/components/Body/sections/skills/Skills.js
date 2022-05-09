@@ -38,20 +38,20 @@ const Skills = () => {
         setSkill({ id:id,perc: data.percentage, exp: data.exp, flag: true });
     }
   return (
-      <div id="skills">
-          <h1 className='text-4xl text-center font-bold pt-20 text-cyan-800'>SKILLS</h1>
+      <div id="skills" className='bg-gray-800 pb-32 mt-16'>
+          <h1 className='text-4xl text-center font-bold pt-20 text-white'>SKILLS</h1>
           <div className='flex flex-col items-center justify-between space-y-6
                           rounded-lg max-w-5xl m-auto px-6 md:px-12 py-8'>
               <div className={skill.flag ? "relative pt-1 w-10/12":"hidden"}>
                   <div className="flex mb-2 items-center justify-between">
                       <div>
-                          <span className="text-md font-semibold inline-block py-1 px-2 uppercase rounded-lg text-cyan-800 bg-orange-300">
+                          <span className="text-md font-semibold inline-block py-1 px-2 uppercase rounded-lg text-white">
                               {skill.exp !== "" ?
                                   'EXP: ' + (skill.exp.split('.')[0] !== '0' ? skill.exp.split('.')[0] + ' Years + ':'' )+ skill.exp.split('.')[1] + ' Months ' : null}
                           </span>
                       </div>
                       <div className="text-right">
-                          <span className="text-xl font-semibold inline-block text-teal-600">
+                          <span className="text-xl font-semibold inline-block text-white">
                               {skill.perc}
                           </span>
                       </div>
@@ -66,8 +66,8 @@ const Skills = () => {
                       skills.map(item => (
                           <div key={item.id} itemID={item.id}
                               className={skill.id !== item.id ?
-                                  "float-left flex items-center mx-2 my-2 text-center py-2 px-4 font-bold cursor-pointer bg-cyan-800 hover:bg-orange-300 text-white hover:text-cyan-800" :
-                                  "float-left flex items-center mx-2 my-2 text-center py-2 px-4 font-bold cursor-pointer bg-orange-300 text-cyan-800"}
+                                  "float-left flex items-center mx-2 my-2 text-center py-2 px-4 font-bold cursor-pointer bg-white hover:bg-orange-400 text-gray-800 hover:text-white" :
+                                  "float-left flex items-center mx-2 my-2 text-center py-2 px-4 font-bold cursor-pointer bg-red-600 text-white"}
                               onClick={() => showRatings(item.id)}>
                               {item.icon}
                               {item.name}
