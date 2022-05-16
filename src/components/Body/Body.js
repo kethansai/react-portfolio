@@ -1,4 +1,5 @@
 import React from 'react'
+import Certification from './sections/Certification/Certification'
 import Contactme  from './sections/contact/Contactme'
 import Education from './sections/Education/Education'
 import Experience from './sections/experience/Experience'
@@ -7,12 +8,13 @@ import Skills from './sections/skills/Skills'
 const Body = () => {
   return (
     <div className='antialiased min-h-screen pt-16 bg-gray-100 bg-pattern'>
-      <Home />
+      <Home/>
       <Experience />
-      <Skills />
+      <Certification/>
+      <Skills/>
       <Education/>
       <Contactme/>
-    </div>
+    </div> 
   )
 }
 

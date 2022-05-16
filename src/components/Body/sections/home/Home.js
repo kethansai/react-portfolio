@@ -5,8 +5,8 @@ import profilePic from '../../../../asset/ProfilePic.png'
 
 const Home = () => {
   return (
-    <div id='home'>
-          <div className='max-w-lg md:max-w-3xl pt-20 px-4 md:px-0 m-auto py-12 '>
+    <div id='home' className='snap-center'>
+          <div className='max-w-lg md:max-w-3xl md:pt-48 px-4 md:px-0 m-auto py-12 md:min-h-screen'>
             <div className='relative'>
               <div className='absolute z-0 inset-0 bg-gradient-to-r from-cyan-400 to-light-blue-500 shadow-lg transform -skew-y-6 rounded-md'>
               </div>

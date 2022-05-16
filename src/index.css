@@ -7,6 +7,22 @@ body{
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
+.scroll-none{
+    animation: marquee 25s linear infinite;
+    overflow: hidden;
+}
+.scroll-none:hover{
+    animation-play-state: paused;
+}
 body::-webkit-scrollbar {
     display: none;
+}
+@keyframes marquee {
+    0% {
+        transform: translateX(10%);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
 }

@@ -38,42 +38,43 @@ const Skills = () => {
         setSkill({ id:id,perc: data.percentage, exp: data.exp, flag: true });
     }
   return (
-      <div id="skills" className='bg-gray-800 pb-32 mt-16'>
-          <h1 className='text-4xl text-center font-bold pt-20 text-white'>SKILLS</h1>
-          <div className='flex flex-col items-center justify-between space-y-6
+      <div id="skills" className='bg-gray-800 min-h-screen'>
+          <div className='md:pt-40'>
+              <h1 className='text-4xl md:text-xl text-center font-bold pt-20 text-white'>SKILLS</h1>
+              <div className='flex flex-col items-center justify-between space-y-6
                           rounded-lg max-w-5xl m-auto px-6 md:px-12 py-8'>
-              <div className={skill.flag ? "relative pt-1 w-10/12":"hidden"}>
-                  <div className="flex mb-2 items-center justify-between">
-                      <div>
-                          <span className="text-md font-semibold inline-block py-1 px-2 uppercase rounded-lg text-white">
-                              {skill.exp !== "" ?
-                                  'EXP: ' + (skill.exp.split('.')[0] !== '0' ? skill.exp.split('.')[0] + ' Years + ':'' )+ skill.exp.split('.')[1] + ' Months ' : null}
-                          </span>
-                      </div>
-                      <div className="text-right">
-                          <span className="text-xl font-semibold inline-block text-white">
-                              {skill.perc}
-                          </span>
-                      </div>
-                  </div>
-                  <div className="overflow-hidden h-4 mb-4 text-xs flex rounded bg-pink-300">
-                      <div style={{width:skill.perc}} className="shadow-none pbar flex flex-col text-center whitespace-nowrap text-white justify-center bg-pink-600"></div>
-                  </div>
-              </div>
-
-              <div>
-                  {
-                      skills.map(item => (
-                          <div key={item.id} itemID={item.id}
-                              className={skill.id !== item.id ?
-                                  "float-left flex items-center mx-2 my-2 text-center py-2 px-4 font-bold cursor-pointer bg-white hover:bg-orange-400 text-gray-800 hover:text-white" :
-                                  "float-left flex items-center mx-2 my-2 text-center py-2 px-4 font-bold cursor-pointer bg-red-600 text-white"}
-                              onClick={() => showRatings(item.id)}>
-                              {item.icon}
-                              {item.name}
+                  <div className={skill.flag ? "relative pt-1 w-10/12" : "hidden"}>
+                      <div className="flex mb-2 items-center justify-between">
+                          <div>
+                              <span className="text-md font-semibold inline-block py-1 px-2 uppercase rounded-lg text-white">
+                                  {skill.exp !== "" ?
+                                      'EXP: ' + (skill.exp.split('.')[0] !== '0' ? skill.exp.split('.')[0] + ' Years + ' : '') + skill.exp.split('.')[1] + ' Months ' : null}
+                              </span>
                           </div>
-                      ))
-                  }
+                          <div className="text-right">
+                              <span className="text-xl font-semibold inline-block text-white">
+                                  {skill.perc}
+                              </span>
+                          </div>
+                      </div>
+                      <div className="overflow-hidden h-6 mb-4 text-xs flex rounded bg-gray-300">
+                          <div style={{ width: skill.perc }} className="shadow-none pbar flex flex-col text-center whitespace-nowrap text-white justify-center bg-yellow-300"></div>
+                      </div>
+                  </div>
+
+                  <div>
+                      {
+                          skills.map(item => (
+                              <div key={item.id} itemID={item.id}
+                                  className={`float-left flex items-center mx-2 my-2 text-center py-2 px-4 font-bold cursor-pointer hover:-translate-y-1 hover:shadow-cyan-500 hover:shadow-2xl 
+                                  ${skill.id !== item.id ? "bg-white hover:bg-orange-400 text-gray-800 hover:text-white " :"bg-red-600 text-white"}`}
+                                  onClick={() => showRatings(item.id)}>
+                                  {item.icon}
+                                  {item.name}
+                              </div>
+                          ))
+                      }
+                  </div>
               </div>
           </div>
     </div>

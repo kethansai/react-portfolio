@@ -46,7 +46,7 @@ const Contactme = () => {
     return (
         <div id="contactme">
             { alert }
-      <div className='flex pt-10 justify-center items-center md:bg-gray-900 mx-4 md:mx-0 '>
+      <div className='flex pt-10 justify-center items-center md:bg-gray-900 mx-4 md:mx-0 md:py-20 '>
             <div className='flex flex-col md:flex-row justify-between overflow-hidden md:overflow-visible
                                 space-y-6 bg-gray-900 md:bg-none w-full max-w-4xl p-8 rounded-xl md:rounded-none shadow-lg md:shadow-none text-white'>
               <div className='flex flex-col justify-around'>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './Navbar.css'
-import { FaUserGraduate, FaHome, FaBriefcase, FaCommentDollar } from 'react-icons/fa';
+import { FaUserGraduate, FaHome, FaBriefcase, FaCommentDollar, FaCertificate } from 'react-icons/fa';
 import { RiFileListFill, RiMailAddFill } from 'react-icons/ri'
 import { HiOutlineOfficeBuilding, HiOutlineMenu } from 'react-icons/hi'
 import { AiFillSafetyCertificate } from 'react-icons/ai'
@@ -15,6 +15,7 @@ const Navbar = () => {
   const mobileMenu = [
     {  href: "#home", text: "Home" },
     {  href: "#experience", text: "Experience" },
+    {  href: "#certifications", text: "Certifications" },
     {  href: "#skills", text: "Skills" },
     {  href: "#education", text: "Education" },
     {  href: "#projects", text: "Projects" },
@@ -23,7 +24,8 @@ const Navbar = () => {
   ];
   const desktopMenu = [
     { href: "#home", text: "Home", icon: <FaHome className='text-xl mt-2.5 mx-1'   />},
-    { href: "#experience", text: "Experience", icon: <FaBriefcase className='text-xl mt-2.5 mx-1' />},
+    { href: "#experience", text: "Experience", icon: <FaBriefcase className='text-xl mt-2.5 mx-1' /> },
+    { href: "#certifications", text: "Certifications", icon: <FaCertificate className='text-xl mt-2.5 mx-1' /> },
     { href: "#skills", text: "Skills", icon: <AiFillSafetyCertificate className='text-xl mt-2.5 mx-1' /> },
     { href: "#education", text: "Education", icon: <FaUserGraduate className='text-xl mt-2.5 mx-1' />},
     { href: "#projects", text: "Projects", icon: <RiFileListFill className='text-xl mt-2.5 mx-1' />},

@@ -10,9 +10,9 @@ const Experience = () => {
   const [flag, setFlag] = useState(false);
   const [cert, setCert] = useState(false);
   return (
-    <div id='experience'>
-      <div className='text-white pt-20 py-12 px-4 md:px-52'>
-        <div className='text-4xl font-bold mb-8 uppercase text-white bg-gradient-to-r from-violet-500 to-fuchsia-500 w-64 px-6 py-4 m-auto border-y-8 border-orange-400'>Experience</div>
+    <div id='experience' className='bg-gray-800 pb-20 snap-center'>
+      <div className='text-white pt-20 py-12 px-4 md:px-52' >
+        <div className='text-4xl md:text-6xl font-bold mb-8 uppercase text-center px-6 py-8 m-auto'>Experience</div>
         <div className='grid grid-cols-5 md:grid-cols-9'>
 
           {/* Stack 1 - Tata Consultancy Services */}
@@ -31,7 +31,7 @@ const Experience = () => {
             </ul>
           </div>
           <div className='col-span-1 order-first md:order-none relative flex justify-center items-center'>
-            <div className='h-full bg-gray-900 w-4'></div>
+            <div className='h-full bg-cyan-500 rounded-t-sm w-4'></div>
             <div className='absolute w-7 h-7 bg-gray-900 md:bg-white rounded-full text-xs font-bold px-2 py-2 text-cyan-700'>
               <div className='rounded-full w-3 h-3 bg-white md:bg-gray-900'></div>
             </div>
@@ -42,7 +42,7 @@ const Experience = () => {
           {/* Stack 2 - Global foundries */}
           <div className='hidden md:block col-span-4 w-full h-full'></div>
           <div className='col-span-1 relative flex justify-center items-center'>
-            <div className='h-full bg-gray-900 w-4'></div>
+            <div className='h-full bg-pink-500 w-4'></div>
             <div className='absolute w-7 h-7 bg-gray-900 md:bg-white rounded-full text-xs font-bold px-2 py-2 text-cyan-700'>
               <div className='rounded-full w-3 h-3 bg-white md:bg-gray-900'>
                 <div className='rounded-full w-px h-px p-1.5 bg-orange-400'></div>
@@ -57,7 +57,7 @@ const Experience = () => {
                 <p className='text-sm font-bold text-white'> Java Developer</p>
                 <p className='text-xs font-bold text-white'> (Sept 2020 - Apr 2021) - 8 Months</p>
               </div>
-              <img src={Certificate} alt='Certificate icon' className='cursor-pointer absolute w-10 h-10 top-8 md:top-2 right-2' onClick={() => { setFlag(true); setCert(GFCertificate) }} />
+              <img src={Certificate} alt='Certificate icon' className='cursor-pointer animate-bounce absolute w-10 h-10 top-8 md:top-2 right-2' onClick={() => { setFlag(true); setCert(GFCertificate) }} />
             </div>
             <ul className='text-xs list-disc font-bold mx-4 mt-3 text-gray-200'>
               <li>worked for Wafer distribution system application project.</li>
@@ -66,7 +66,7 @@ const Experience = () => {
           </div>
         </div>
         <div className='grid grid-cols-5 md:grid-cols-9'>
-          {/* Stack 1 - Tata Consultancy Services */}
+          {/* Stack 3 - Stickman Services */}
           <div className='col-span-4 bg-gray-800 mt-10 md:mt-0 shadow-xl rounded-xl px-8 py-10 hover:shadow-2xl shadow-green-500 hover:shadow-indigo-500'>
             <div className='relative'>
               <div>
@@ -74,7 +74,7 @@ const Experience = () => {
                 <p className='text-sm font-bold text-white'> Assistant Engineer</p>
                 <p className='text-xs font-bold text-white'> (MAR 2020 - MAY 2020) - 3 Months</p>
               </div>
-              <img src={Certificate} alt='Certificate icon' className='cursor-pointer absolute w-10 h-10 top-8 md:top-2 right-2' onClick={() => { setFlag(true); setCert(SSCertificate) }} />
+              <img src={Certificate} alt='Certificate icon' className='cursor-pointer animate-bounce absolute w-10 h-10 top-8 md:top-2 right-2' onClick={() => { setFlag(true); setCert(SSCertificate) }} />
             </div>
               <ul className='text-xs list-disc font-bold mx-4 mt-3 text-gray-200'>
               <li>Second hand car selling application, under this project worked as component designer.</li>
@@ -82,7 +82,7 @@ const Experience = () => {
             </ul>
           </div>
           <div className='col-span-1 order-first md:order-none relative flex justify-center items-center'>
-            <div className='h-full bg-gray-900 w-4'></div>
+            <div className='h-full bg-green-500 rounded-b-sm w-4'></div>
             <div className='absolute w-7 h-7 bg-gray-900 md:bg-white rounded-full text-xs font-bold px-2 py-2 text-cyan-700'>
               <div className='rounded-full w-3 h-3 bg-white md:bg-gray-900'>
                 <div className='rounded-full w-px h-px p-1.5 bg-orange-400'></div>
