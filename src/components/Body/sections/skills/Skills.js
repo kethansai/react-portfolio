@@ -40,7 +40,7 @@ const Skills = () => {
   return (
       <div id="skills" className='bg-gray-800 min-h-screen'>
           <div className='md:pt-40'>
-              <h1 className='text-4xl md:text-xl text-center font-bold pt-20 text-white'>SKILLS</h1>
+              <h1 className='text-4xl md:text-6xl text-center font-bold pt-20 text-white'>SKILLS</h1>
               <div className='flex flex-col items-center justify-between space-y-6
                           rounded-lg max-w-5xl m-auto px-6 md:px-12 py-8'>
                   <div className={skill.flag ? "relative pt-1 w-10/12" : "hidden"}>

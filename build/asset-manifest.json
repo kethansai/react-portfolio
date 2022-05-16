@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "./static/css/main.e174a229.css",
+    "main.js": "./static/js/main.464e24f0.js",
+    "static/media/Coursera_IBMDatascience.png": "./static/media/Coursera_IBMDatascience.8bc598bbf57b5f9a4502.png",
+    "static/media/ProfilePic.png": "./static/media/ProfilePic.3a742fd15f031a3814f5.png",
+    "static/media/Internshala_WebDevelopment.png": "./static/media/Internshala_WebDevelopment.df154567f320cea7a286.png",
+    "static/media/school-logo.png": "./static/media/school-logo.15ab4d3651d0ba38ed27.png",
+    "static/media/Udemy_gitMaster.png": "./static/media/Udemy_gitMaster.92efb60e0f4089ce5490.png",
+    "static/media/SS-certificate.jpg": "./static/media/SS-certificate.402305619cb00fe1a27e.jpg",
+    "static/media/Linkedin_Manager.png": "./static/media/Linkedin_Manager.9cb9d4504a33c54f3fe1.png",
+    "static/media/GF_Experience-certificate.jpg": "./static/media/GF_Experience-certificate.04833d0a5197135353a3.jpg",
+    "static/media/dust_texture.svg": "./static/media/dust_texture.84fe2a831230fadf45a3.svg",
+    "static/media/Udemy_AdvancedCSS.png": "./static/media/Udemy_AdvancedCSS.9bc42edc52d3727a3b8e.png",
+    "static/media/LinkedIn_SQL.png": "./static/media/LinkedIn_SQL.30dc616e1e390aa84f76.png",
+    "static/media/svce-logo.png": "./static/media/svce-logo.7d9b46340e6c00a7c64f.png",
+    "static/media/narayana-logo.png": "./static/media/narayana-logo.adfbabf4664793b6fdfa.png",
+    "static/media/tcs-logo.png": "./static/media/tcs-logo.2db4db6a9df36243daae.png",
+    "static/media/gf-logo.png": "./static/media/gf-logo.8afd9853cd81854c5bde.png",
+    "static/media/logo-king-white-cropped.png": "./static/media/logo-king-white-cropped.56a2fc7c7f5ee917de1b.png",
+    "index.html": "./index.html",
+    "main.e174a229.css.map": "./static/css/main.e174a229.css.map",
+    "main.464e24f0.js.map": "./static/js/main.464e24f0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e174a229.css",
+    "static/js/main.464e24f0.js"
+  ]
+}
