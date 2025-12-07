@@ -25,11 +25,10 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Install dependencies
+      - name: Install dependencies and build
         run: |
-          npm cache clean --force
           npm install --legacy-peer-deps
-          npm run build
+          npx --no-install vite build
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
