@@ -1,28 +1,122 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300;
+  }
 
-body{
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-.scroll-none{
-    animation: marquee 25s linear infinite;
-    overflow: hidden;
-}
-.scroll-none:hover{
-    animation-play-state: paused;
-}
-body::-webkit-scrollbar {
-    display: none;
-}
-@keyframes marquee {
-    0% {
-        transform: translateX(10%);
-    }
+  /* Smooth scrolling for all browsers */
+  html {
+    scroll-behavior: smooth;
+  }
 
-    100% {
-        transform: translateX(-50%);
-    }
+  /* Improve touch scrolling on mobile */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Prevent layout shift on mobile */
+  html,
+  body {
+    overflow-x: hidden;
+  }
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 640px) {
+  /* Larger touch targets for mobile */
+  button,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Better spacing for mobile */
+  section {
+    scroll-margin-top: 80px;
+  }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Print Styles */
+@media print {
+  @page {
+    margin: 1cm;
+    size: A4;
+  }
+
+  body {
+    background-color: white !important;
+    color: black !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .print-break-before {
+    page-break-before: always;
+    break-before: always;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+
+  p,
+  li {
+    font-size: 0.875rem;
+    line-height: 1.625;
+  }
+
+  .container {
+    max-width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  button,
+  .animated {
+    animation: none !important;
+    transition: none !important;
+  }
 }
