@@ -1,88 +1,85 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { FaBriefcase, FaCalendar, FaMapMarkerAlt } from "react-icons/fa";
+import { FaBriefcase, FaMapMarkerAlt } from "react-icons/fa";
 import { experience } from "../data/portfolioData";
+import SectionHeading from "./SectionHeading";
 
 const Experience = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
     <section
       id="experience"
-      className="py-20 px-4 bg-gray-50 dark:bg-gray-800 print-section print-break-before"
+      className="section bg-ink-50/60 dark:bg-ink-950/60 print-section print-break-before"
     >
-      <div className="container mx-auto max-w-6xl">
-        <motion.h2
-          ref={ref}
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center text-gray-900 dark:text-white px-4"
-        >
-          Professional Experience
-        </motion.h2>
+      <div className="absolute inset-0 bg-dotgrid opacity-30 pointer-events-none" />
+      <div className="container relative z-10">
+        <SectionHeading
+          eyebrow="02 — Experience"
+          title="A track record of"
+          highlight="compounding impact."
+          description="Six years across product, platform, and enterprise teams — always leaving the codebase better than I found it."
+        />
 
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-primary-200 dark:bg-primary-800" />
-          {/* Mobile timeline line */}
-          <div className="md:hidden absolute left-4 top-0 bottom-0 w-0.5 bg-primary-200 dark:bg-primary-800" />
+        <div ref={ref} className="relative max-w-4xl mx-auto">
+          {/* Spine */}
+          <div className="absolute left-5 sm:left-6 top-2 bottom-2 w-px bg-gradient-to-b from-primary-400/60 via-accent-400/40 to-transparent" />
 
-          {experience.map((job, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: index * 0.2, duration: 0.6 }}
-              className={`mb-8 sm:mb-12 flex flex-col md:flex-row gap-8 items-start relative ${
-                index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-              }`}
-            >
-              {/* Timeline dot - Desktop */}
-              <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary-600 dark:bg-primary-400 rounded-full border-4 border-white dark:border-gray-800" />
-
-              {/* Timeline dot - Mobile */}
-              <div className="md:hidden absolute left-4 w-3 h-3 bg-primary-600 dark:bg-primary-400 rounded-full border-2 border-white dark:border-gray-800" />
-
-              {/* Content */}
-              <div
-                className={`md:w-1/2 pl-10 md:pl-0 ${
-                  index % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"
-                }`}
+          <ol className="space-y-8">
+            {experience.map((job, i) => (
+              <motion.li
+                key={`${job.company}-${i}`}
+                initial={{ opacity: 0, y: 24 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: i * 0.08, duration: 0.55 }}
+                className="relative pl-14 sm:pl-16"
               >
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  className="bg-white dark:bg-gray-900 p-4 sm:p-6 rounded-lg shadow-lg print-section"
-                >
-                  <h3 className="text-lg sm:text-xl font-bold text-primary-600 dark:text-primary-400 mb-2">
-                    {job.position}
-                  </h3>
-                  <div className="flex items-center gap-2 mb-2 text-gray-700 dark:text-gray-300 flex-wrap text-sm sm:text-base">
-                    <FaBriefcase className="flex-shrink-0" />
-                    <span className="font-semibold">{job.company}</span>
-                  </div>
-                  <div className="flex items-center gap-2 mb-2 text-gray-600 dark:text-gray-400 flex-wrap text-sm sm:text-base">
-                    <FaMapMarkerAlt className="flex-shrink-0" />
-                    <span>{job.location}</span>
-                  </div>
-                  <div className="flex items-center gap-2 mb-4 text-gray-600 dark:text-gray-400 text-sm sm:text-base">
-                    <FaCalendar className="flex-shrink-0" />
-                    <span>{job.period}</span>
-                  </div>
-                  <ul className="space-y-2 text-gray-700 dark:text-gray-300 text-left text-sm sm:text-base">
-                    {job.responsibilities.map((resp, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <span className="text-primary-600 dark:text-primary-400 mt-1 flex-shrink-0">
-                          •
+                {/* Node */}
+                <span className="absolute left-5 sm:left-6 -translate-x-1/2 top-6 flex items-center justify-center">
+                  <span className="absolute w-5 h-5 rounded-full bg-primary-400/20 animate-pulse-ring" />
+                  <span className="relative w-3 h-3 rounded-full bg-gradient-to-br from-primary-500 to-accent-500 ring-4 ring-white dark:ring-ink-950" />
+                </span>
+
+                <div className="group rounded-2xl border border-ink-200 dark:border-ink-800 bg-white dark:bg-ink-900 p-5 sm:p-6 shadow-soft hover:border-primary-400/50 transition-colors">
+                  <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
+                    <div>
+                      <p className="text-[11px] font-mono uppercase tracking-widest text-primary-500">
+                        {job.period}
+                      </p>
+                      <h3 className="mt-1 font-display text-lg sm:text-xl font-semibold text-ink-900 dark:text-white">
+                        {job.position}
+                      </h3>
+                      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted mt-1">
+                        <span className="inline-flex items-center gap-1.5">
+                          <FaBriefcase className="text-ink-400" />
+                          <span className="font-medium text-ink-700 dark:text-ink-200">
+                            {job.company}
+                          </span>
                         </span>
-                        <span>{resp}</span>
+                        <span className="inline-flex items-center gap-1.5">
+                          <FaMapMarkerAlt className="text-ink-400" />
+                          {job.location}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2 mt-4">
+                    {job.responsibilities.map((r, j) => (
+                      <li
+                        key={j}
+                        className="flex items-start gap-2 text-sm text-ink-700 dark:text-ink-300"
+                      >
+                        <span className="mt-2 w-1.5 h-1.5 rounded-full bg-gradient-to-r from-primary-500 to-accent-500 flex-shrink-0" />
+                        <span>{r}</span>
                       </li>
                     ))}
                   </ul>
-                </motion.div>
-              </div>
-            </motion.div>
-          ))}
+                </div>
+              </motion.li>
+            ))}
+          </ol>
         </div>
       </div>
     </section>

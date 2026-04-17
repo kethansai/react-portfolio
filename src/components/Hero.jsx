@@ -1,271 +1,280 @@
 import { motion } from "framer-motion";
 import {
-  FaEnvelope,
-  FaPhone,
-  FaMapMarkerAlt,
   FaGithub,
   FaLinkedin,
   FaDownload,
   FaWhatsapp,
+  FaArrowRight,
+  FaMapMarkerAlt,
 } from "react-icons/fa";
+import { HiSparkles } from "react-icons/hi2";
 import { personalInfo, socialLinks } from "../data/portfolioData";
 
+const careerStart = new Date("2020-02-01");
+const years = (
+  (Date.now() - careerStart.getTime()) /
+  (1000 * 60 * 60 * 24 * 365.25)
+).toFixed(1);
+
+const stats = [
+  { label: "Years shipping", value: `${years}+` },
+  { label: "Production apps", value: "20+" },
+  { label: "CI/CD faster", value: "80%" },
+  { label: "AI-boosted delivery", value: "95%" },
+];
+
+const TerminalCard = () => (
+  <motion.div
+    initial={{ opacity: 0, y: 40 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.4, duration: 0.9, ease: "easeOut" }}
+    className="gradient-border w-full max-w-lg shadow-glow"
+  >
+    <div className="gb-inner overflow-hidden font-mono text-[13px] leading-relaxed">
+      <div className="flex items-center gap-2 px-4 py-3 border-b border-ink-200 dark:border-ink-800 bg-ink-50/80 dark:bg-ink-900/80">
+        <span className="w-3 h-3 rounded-full bg-red-400/80" />
+        <span className="w-3 h-3 rounded-full bg-yellow-400/80" />
+        <span className="w-3 h-3 rounded-full bg-green-400/80" />
+        <span className="ml-3 text-ink-500 dark:text-ink-400 text-xs">
+          ~/kethan — zsh
+        </span>
+      </div>
+      <div className="p-5 space-y-1 text-ink-700 dark:text-ink-200">
+        <p>
+          <span className="text-primary-500">$</span>{" "}
+          <span className="text-ink-900 dark:text-ink-50">whoami</span>
+        </p>
+        <p className="pl-3 text-muted">staff engineer · full-stack · devops</p>
+
+        <p className="mt-3">
+          <span className="text-primary-500">$</span>{" "}
+          <span className="text-ink-900 dark:text-ink-50">cat stack.json</span>
+        </p>
+        <pre className="pl-3 text-muted whitespace-pre-wrap">{`{
+  "frontend": ["Vue 3", "React", "TypeScript"],
+  "backend":  [".NET 8", "FastAPI", "Node.js"],
+  "devops":   ["Docker", "K8s", "ArgoCD", "OpenShift"],
+  "ai":       ["Prompt Engineering", "AI-assisted delivery"]
+}`}</pre>
+
+        <p className="mt-3">
+          <span className="text-primary-500">$</span>{" "}
+          <span className="text-ink-900 dark:text-ink-50">status --now</span>
+        </p>
+        <p className="pl-3">
+          <span className="inline-flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-emerald-500">
+              open to senior &amp; staff roles
+            </span>
+          </span>
+          <span className="text-ink-400 dark:text-ink-500 animate-blink">▍</span>
+        </p>
+      </div>
+    </div>
+  </motion.div>
+);
+
 const Hero = () => {
-  const handlePrint = () => {
-    window.print();
-  };
+  const handlePrint = () => window.print();
 
   return (
-    <section className="min-h-screen flex items-center justify-center pt-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            rotate: [0, 90, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          className="absolute top-1/4 left-1/4 w-48 h-48 sm:w-72 sm:h-72 bg-primary-200/20 dark:bg-primary-900/10 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1.2, 1, 1.2],
-            rotate: [90, 0, 90],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          className="absolute bottom-1/4 right-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-blue-200/20 dark:bg-blue-900/10 rounded-full blur-3xl"
-        />
-      </div>
+    <section
+      id="top"
+      className="relative min-h-screen pt-28 sm:pt-32 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden"
+    >
+      <div className="aurora" />
+      <div className="absolute inset-0 bg-dotgrid mask-radial-fade opacity-70 dark:opacity-60 pointer-events-none" />
 
-      <div className="container mx-auto relative z-10">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="flex flex-col md:flex-row items-center justify-center gap-8 sm:gap-12 md:gap-16"
-          >
-            {/* Profile Image Section */}
+      <div className="container relative z-10">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+          {/* LEFT */}
+          <div className="lg:col-span-7 flex flex-col gap-7">
             <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative flex-shrink-0"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="flex flex-wrap items-center gap-3"
             >
-              {/* Animated rings around image */}
+              <span className="eyebrow shimmer-bg animate-shimmer">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-pulse-ring absolute inline-flex h-full w-full rounded-full bg-emerald-400/60" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                </span>
+                Available for new roles
+              </span>
+              <span className="eyebrow">
+                <FaMapMarkerAlt className="text-primary-500" /> Bangalore, IN
+              </span>
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.7 }}
+              className="font-display font-bold tracking-tight text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05]"
+            >
+              <span className="block text-ink-900 dark:text-ink-50">
+                Building{" "}
+                <span className="text-gradient">scalable products</span>
+              </span>
+              <span className="block mt-2 text-ink-700 dark:text-ink-300 text-2xl sm:text-3xl md:text-4xl font-medium">
+                across{" "}
+                <span className="text-primary-500">frontend</span>,{" "}
+                <span className="text-accent-500">backend</span> &amp;{" "}
+                <span className="text-primary-500">devops</span>.
+              </span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.7 }}
+              className="max-w-xl text-base sm:text-lg text-muted leading-relaxed"
+            >
+              Hi, I&apos;m{" "}
+              <span className="text-ink-900 dark:text-ink-50 font-semibold">
+                Kethan Vemuri
+              </span>{" "}
+              — a Staff Engineer turning complex requirements into
+              production-grade systems with Vue 3, .NET 8, FastAPI and
+              Kubernetes. I care deeply about clean architecture, DX, and
+              shipping fast without cutting corners.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.7 }}
+              className="flex flex-wrap gap-3 no-print"
+            >
+              <a href="#projects" className="btn-primary">
+                View my work <FaArrowRight />
+              </a>
+              <button onClick={handlePrint} className="btn-ghost">
+                <FaDownload /> Download resume
+              </button>
+              <a href="#contact" className="btn-ghost">
+                <HiSparkles className="text-accent-500" /> Let&apos;s talk
+              </a>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.45, duration: 0.8 }}
+              className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-px bg-ink-200/60 dark:bg-ink-800 rounded-xl overflow-hidden border border-ink-200 dark:border-ink-800"
+            >
+              {stats.map((s) => (
+                <div
+                  key={s.label}
+                  className="bg-white dark:bg-ink-900 px-4 py-4"
+                >
+                  <div className="font-display text-2xl sm:text-3xl font-bold text-gradient">
+                    {s.value}
+                  </div>
+                  <div className="text-[11px] sm:text-xs uppercase tracking-wider text-muted mt-1">
+                    {s.label}
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+              className="flex items-center gap-4 pt-2 no-print"
+            >
+              <span className="text-xs font-mono uppercase tracking-widest text-muted">
+                find me
+              </span>
+              <span className="divider flex-1 max-w-[60px]" />
+              {[
+                { href: socialLinks.github, Icon: FaGithub, label: "GitHub" },
+                {
+                  href: socialLinks.linkedin,
+                  Icon: FaLinkedin,
+                  label: "LinkedIn",
+                },
+                {
+                  href: socialLinks.whatsapp,
+                  Icon: FaWhatsapp,
+                  label: "WhatsApp",
+                },
+              ].map(({ href, Icon, label }) => (
+                <motion.a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ y: -3 }}
+                  aria-label={label}
+                  className="w-10 h-10 flex items-center justify-center rounded-lg border border-ink-200 dark:border-ink-800 bg-white/60 dark:bg-ink-900/60 text-ink-700 dark:text-ink-200 hover:text-primary-500 hover:border-primary-400/60 transition-colors"
+                >
+                  <Icon size={18} />
+                </motion.a>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* RIGHT */}
+          <div className="lg:col-span-5 flex flex-col items-center gap-10">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="relative flex flex-col items-center"
+            >
+              {/* Circular glow halo (constrained to a circle so it doesn't render as a square blur) */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[22rem] h-[22rem] sm:w-[26rem] sm:h-[26rem] rounded-full bg-[radial-gradient(closest-side,theme(colors.primary.400/35),theme(colors.accent.400/18),transparent_70%)] blur-2xl"
+              />
+
+              {/* Avatar with gradient ring */}
+              <div className="relative animate-float">
+                <div className="p-[3px] rounded-full bg-gradient-to-br from-primary-400 via-accent-400 to-primary-500 shadow-glow">
+                  <div className="rounded-full bg-white dark:bg-ink-950 p-1">
+                    <div className="w-44 h-44 sm:w-52 sm:h-52 md:w-60 md:h-60 rounded-full overflow-hidden">
+                      <img
+                        src="/images/profile.jpg"
+                        alt={personalInfo.name}
+                        className="w-full h-full object-cover"
+                        loading="eager"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Role badge — centered below avatar, not overlapping the ring */}
               <motion.div
-                animate={{
-                  rotate: 360,
-                }}
-                transition={{
-                  duration: 20,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-                className="absolute inset-0 -m-4"
-              >
-                <div className="w-full h-full rounded-full border-4 border-dashed border-primary-400/30 dark:border-primary-600/30"></div>
-              </motion.div>
-
-              <motion.div
-                animate={{
-                  rotate: -360,
-                }}
-                transition={{
-                  duration: 25,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-                className="absolute inset-0 -m-8"
-              >
-                <div className="w-full h-full rounded-full border-4 border-dotted border-blue-400/20 dark:border-blue-600/20"></div>
-              </motion.div>
-
-              {/* Gradient glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-primary-500 via-blue-500 to-purple-500 rounded-full blur-2xl opacity-30 animate-pulse"></div>
-
-              {/* Profile image container */}
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 sm:border-8 border-white dark:border-gray-800 shadow-2xl bg-gradient-to-br from-primary-100 to-blue-100 dark:from-gray-700 dark:to-gray-600"
-              >
-                {/* Placeholder with initials - Replace with your image */}
-                {/* <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary-500 via-blue-500 to-purple-500">
-                  <span className="text-8xl md:text-9xl font-bold text-white">
-                    {personalInfo.name.split(' ').map(n => n[0]).join('')}
-                  </span>
-                </div> */}
-
-                {/* Uncomment and use this when you add your image */}
-                <img
-                  src="/images/profile.jpg"
-                  alt={personalInfo.name}
-                  className="w-full h-full object-cover"
-                />
-              </motion.div>
-
-              {/* Floating badge */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1, duration: 0.5 }}
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                className="absolute -bottom-4 -right-4 px-6 py-3 bg-white dark:bg-gray-800 rounded-full shadow-xl border-4 border-white dark:border-gray-700"
+                transition={{ delay: 0.8 }}
+                className="relative -mt-4 px-4 py-1.5 rounded-full glass text-xs font-mono text-ink-700 dark:text-ink-200 shadow-soft whitespace-nowrap"
               >
-                <span className="text-2xl">👋</span>
+                <span className="text-primary-500">role</span>:&nbsp;Staff
+                Engineer @ Infineon
               </motion.div>
             </motion.div>
 
-            {/* Text Content */}
-            <div className="text-center md:text-left flex-1">
-              <motion.h1
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 text-gray-900 dark:text-white"
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-              >
-                {personalInfo.name}
-              </motion.h1>
-
-              <motion.h2
-                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl bg-gradient-to-r from-primary-600 via-blue-600 to-purple-600 dark:from-primary-400 dark:via-blue-400 dark:to-purple-400 bg-clip-text text-transparent mb-6 font-bold"
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.4, duration: 0.8 }}
-              >
-                {personalInfo.title}
-              </motion.h2>
-
-              <motion.div
-                className="flex flex-col sm:flex-row flex-wrap justify-center md:justify-start gap-3 sm:gap-4 mb-8"
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.5, duration: 0.8 }}
-              >
-                <motion.a
-                  href={socialLinks.email}
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full shadow-lg hover:shadow-xl transition-all text-sm sm:text-base"
-                >
-                  <FaEnvelope className="text-red-500 flex-shrink-0" />
-                  <span className="truncate">{personalInfo.email}</span>
-                </motion.a>
-                <motion.a
-                  href={`tel:${personalInfo.phone}`}
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full shadow-lg hover:shadow-xl transition-all text-sm sm:text-base"
-                >
-                  <FaPhone className="text-green-500 flex-shrink-0" />{" "}
-                  {personalInfo.phone}
-                </motion.a>
-              </motion.div>
-
-              <motion.div
-                className="flex items-center justify-center md:justify-start gap-2 mb-8 text-gray-600 dark:text-gray-400"
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.6, duration: 0.8 }}
-              >
-                <FaMapMarkerAlt />
-                <span className="text-sm">{personalInfo.location}</span>
-              </motion.div>
-
-              <motion.div
-                className="flex flex-col sm:flex-row flex-wrap justify-center md:justify-start gap-3 sm:gap-4 mb-8 no-print"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7, duration: 0.8 }}
-              >
-                <motion.a
-                  href={socialLinks.email}
-                  whileHover={{
-                    scale: 1.05,
-                    boxShadow: "0 10px 30px rgba(59, 130, 246, 0.3)",
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-6 sm:px-8 py-2.5 sm:py-3 bg-gradient-to-r from-primary-600 to-blue-600 text-white rounded-full font-semibold 
-                         shadow-lg flex items-center justify-center gap-2 hover:from-primary-700 hover:to-blue-700 transition-all text-sm sm:text-base"
-                >
-                  <FaEnvelope /> Email Me
-                </motion.a>
-                <motion.button
-                  onClick={handlePrint}
-                  whileHover={{
-                    scale: 1.05,
-                    boxShadow: "0 10px 30px rgba(107, 114, 128, 0.3)",
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-6 sm:px-8 py-2.5 sm:py-3 bg-gradient-to-r from-gray-800 to-gray-900 dark:from-gray-700 dark:to-gray-800 text-white rounded-full 
-                         font-semibold shadow-lg flex items-center justify-center gap-2 transition-all text-sm sm:text-base"
-                >
-                  <FaDownload /> Resume
-                </motion.button>
-              </motion.div>
-
-              <motion.div
-                className="flex justify-center md:justify-start gap-4 sm:gap-6 no-print"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.9, duration: 0.8 }}
-              >
-                <motion.a
-                  href={socialLinks.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.3, rotate: 360 }}
-                  whileTap={{ scale: 0.9 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                  className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center bg-white dark:bg-gray-800 rounded-full shadow-lg hover:shadow-xl transition-shadow"
-                >
-                  <FaGithub
-                    size={24}
-                    className="text-gray-800 dark:text-white sm:text-[28px]"
-                  />
-                </motion.a>
-                <motion.a
-                  href={socialLinks.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.3, rotate: 360 }}
-                  whileTap={{ scale: 0.9 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                  className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center bg-white dark:bg-gray-800 rounded-full shadow-lg hover:shadow-xl transition-shadow"
-                >
-                  <FaLinkedin
-                    size={24}
-                    className="text-blue-600 dark:text-blue-400 sm:text-[28px]"
-                  />
-                </motion.a>
-                <motion.a
-                  href={socialLinks.whatsapp}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.3, rotate: 360 }}
-                  whileTap={{ scale: 0.9 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                  className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center bg-white dark:bg-gray-800 rounded-full shadow-lg hover:shadow-xl transition-shadow"
-                >
-                  <FaWhatsapp
-                    size={24}
-                    className="text-green-500 sm:text-[28px]"
-                  />
-                </motion.a>
-              </motion.div>
-            </div>
-          </motion.div>
+            <TerminalCard />
+          </div>
         </div>
       </div>
+
+      <motion.a
+        href="#about"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2 }}
+        className="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-xs font-mono text-muted no-print"
+      >
+        <span className="uppercase tracking-[0.25em]">scroll</span>
+        <span className="w-px h-10 bg-gradient-to-b from-ink-400 to-transparent animate-pulse" />
+      </motion.a>
     </section>
   );
 };

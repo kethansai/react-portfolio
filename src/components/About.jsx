@@ -1,78 +1,117 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import {
+  FaLayerGroup,
+  FaServer,
+  FaCloud,
+  FaRobot,
+  FaCheckCircle,
+} from "react-icons/fa";
 import { personalInfo } from "../data/portfolioData";
+import SectionHeading from "./SectionHeading";
+
+const pillars = [
+  {
+    Icon: FaLayerGroup,
+    title: "Frontend Architecture",
+    desc: "Vue 3, React, TypeScript. Component systems, state design, testing with Vitest.",
+    tone: "from-primary-500/20 to-primary-500/0",
+  },
+  {
+    Icon: FaServer,
+    title: "Backend Engineering",
+    desc: ".NET 8, Python FastAPI, Node.js. REST + GraphQL, MySQL, PostgreSQL, MongoDB.",
+    tone: "from-accent-500/20 to-accent-500/0",
+  },
+  {
+    Icon: FaCloud,
+    title: "DevOps & Platform",
+    desc: "Docker, Kubernetes, OpenShift, ArgoCD, GitLab/Bitbucket CI/CD as Build Master.",
+    tone: "from-primary-500/20 to-accent-500/10",
+  },
+  {
+    Icon: FaRobot,
+    title: "AI-Augmented Delivery",
+    desc: "Prompt engineering & AI-assisted workflows lifting delivery by 40%+.",
+    tone: "from-accent-500/20 to-primary-500/10",
+  },
+];
 
 const About = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section
-      id="about"
-      className="py-20 px-4 bg-white dark:bg-gray-900 print-section relative overflow-hidden"
-    >
-      {/* Background Decorations */}
-      <div className="absolute top-0 right-0 w-72 h-72 bg-primary-100 dark:bg-primary-900/20 rounded-full blur-3xl opacity-50" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-100 dark:bg-blue-900/20 rounded-full blur-3xl opacity-50" />
+    <section id="about" className="section print-section">
+      <div className="absolute inset-0 bg-dotgrid opacity-40 mask-radial-fade pointer-events-none" />
+      <div className="container relative z-10">
+        <SectionHeading
+          eyebrow="01 — About"
+          title="Senior engineer who"
+          highlight="ships what matters."
+          description="I bridge product intent and production reality — architecting systems that are fast to build, safe to change, and a pleasure to maintain."
+        />
 
-      <div className="container mx-auto max-w-6xl relative z-10">
-        <motion.div
+        <div
           ref={ref}
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          className="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6 max-w-6xl mx-auto"
         >
-          <div className="text-center mb-8 sm:mb-12">
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={isInView ? { scale: 1 } : {}}
-              transition={{ duration: 0.5 }}
-              className="inline-block"
-            >
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary-600 to-blue-600 dark:from-primary-400 dark:to-blue-400 bg-clip-text text-transparent px-4">
-                Professional Summary
-              </h2>
-            </motion.div>
-            <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-primary-600 to-blue-600 mx-auto rounded-full" />
-          </div>
-
+          {/* Big summary tile */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="bg-gradient-to-br from-primary-50 to-blue-50 dark:from-gray-800 dark:to-gray-700 p-6 sm:p-8 rounded-2xl shadow-lg mb-8 sm:mb-12"
+            initial={{ opacity: 0, y: 24 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7 }}
+            className="gradient-border lg:col-span-2 lg:row-span-2"
           >
-            <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-              {personalInfo.summary}
-            </p>
+            <div className="gb-inner p-6 sm:p-8 flex flex-col gap-5">
+              <span className="eyebrow w-fit">summary.md</span>
+              <p className="text-base sm:text-lg text-ink-700 dark:text-ink-200 leading-relaxed">
+                {personalInfo.summary}
+              </p>
+              <div className="divider" />
+              <ul className="grid sm:grid-cols-2 gap-3">
+                {personalInfo.coreCompetencies.map((c) => (
+                  <li
+                    key={c}
+                    className="flex items-start gap-2.5 text-sm text-ink-700 dark:text-ink-300"
+                  >
+                    <FaCheckCircle className="mt-0.5 text-primary-500 flex-shrink-0" />
+                    <span>{c}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </motion.div>
 
-          <div className="mt-8 sm:mt-12">
-            <h3 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center text-gray-900 dark:text-white px-4">
-              Core Competencies
-            </h3>
-            <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
-              {personalInfo.coreCompetencies.map((competency, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ delay: 0.3 + index * 0.1, duration: 0.6 }}
-                  whileHover={{ scale: 1.03, x: 5 }}
-                  className="flex items-start gap-3 sm:gap-4 p-4 sm:p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all border-l-4 border-primary-500"
-                >
-                  <span className="flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center bg-gradient-to-r from-primary-500 to-blue-500 text-white rounded-full font-bold text-sm sm:text-base">
-                    {index + 1}
-                  </span>
-                  <span className="text-sm sm:text-base text-gray-700 dark:text-gray-300 font-medium">
-                    {competency}
-                  </span>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
+          {/* Pillar tiles */}
+          {pillars.map((p, i) => (
+            <motion.div
+              key={p.title}
+              initial={{ opacity: 0, y: 24 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.15 + i * 0.08, duration: 0.6 }}
+              whileHover={{ y: -4 }}
+              className="group relative rounded-2xl border border-ink-200 dark:border-ink-800 bg-white dark:bg-ink-900 p-5 overflow-hidden"
+            >
+              <div
+                className={`absolute inset-0 bg-gradient-to-br ${p.tone} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+              />
+              <div className="relative flex items-start gap-3">
+                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary-500/15 to-accent-500/15 border border-primary-400/20 text-primary-500 flex items-center justify-center">
+                  <p.Icon size={18} />
+                </div>
+                <div>
+                  <h3 className="font-display font-semibold text-ink-900 dark:text-white text-lg">
+                    {p.title}
+                  </h3>
+                  <p className="text-sm text-muted mt-1 leading-relaxed">
+                    {p.desc}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

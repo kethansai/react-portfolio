@@ -1,111 +1,151 @@
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { FaBars, FaTimes } from "react-icons/fa";
 import ThemeToggle from "./ThemeToggle";
+import Logo from "./Logo";
+
+const navItems = [
+  { name: "About", href: "#about" },
+  { name: "Experience", href: "#experience" },
+  { name: "Skills", href: "#skills" },
+  { name: "Projects", href: "#projects" },
+  { name: "Education", href: "#education" },
+  { name: "Contact", href: "#contact" },
+];
 
 const Header = ({ theme, toggleTheme }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [active, setActive] = useState("#about");
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+    const onScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+
+      // active-section tracking
+      const y = window.scrollY + 120;
+      let current = "#about";
+      for (const item of navItems) {
+        const el = document.querySelector(item.href);
+        if (el && el.offsetTop <= y) current = item.href;
+      }
+      setActive(current);
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const navItems = [
-    { name: "About", href: "#about" },
-    { name: "Experience", href: "#experience" },
-    { name: "Skills", href: "#skills" },
-    { name: "Projects", href: "#projects" },
-    { name: "Education", href: "#education" },
-    { name: "Achievements", href: "#achievements" },
-    { name: "Contact", href: "#contact" },
-  ];
-
-  const scrollToSection = (e, href) => {
+  const scrollTo = (e, href) => {
     e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsMobileMenuOpen(false);
-    }
+    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+    setIsMobileMenuOpen(false);
   };
 
   return (
     <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
+      initial={{ y: -60, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 no-print ${
-        isScrolled
-          ? "bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-lg"
-          : "bg-transparent"
+        isScrolled ? "py-3" : "py-5"
       }`}
     >
-      <nav className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          <motion.a
-            href="#"
-            className="text-2xl font-bold text-primary-600 dark:text-primary-400"
-            whileHover={{ scale: 1.05 }}
+      <div className="container flex items-center justify-between gap-4">
+        {/* Logo */}
+        <motion.a
+          href="#top"
+          whileHover={{ scale: 1.04 }}
+          className="group flex items-center gap-2.5 font-display font-bold text-ink-900 dark:text-ink-50"
+        >
+          <Logo size="md" />
+          <span className="hidden sm:inline text-base tracking-tight">
+            kethan<span className="text-primary-500">.</span>dev
+          </span>
+        </motion.a>
+
+        {/* Desktop nav pill */}
+        <nav className="hidden md:flex items-center">
+          <div className="glass rounded-full px-2 py-1.5 flex items-center gap-1 shadow-soft">
+            {navItems.map((item) => {
+              const isActive = active === item.href;
+              return (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  onClick={(e) => scrollTo(e, item.href)}
+                  className="relative px-3.5 py-1.5 text-sm font-medium text-ink-700 dark:text-ink-200 hover:text-ink-900 dark:hover:text-white transition-colors"
+                >
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-active"
+                      className="absolute inset-0 rounded-full bg-gradient-to-r from-primary-500/15 to-accent-500/15 border border-primary-400/30"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                  <span className="relative">{item.name}</span>
+                </a>
+              );
+            })}
+          </div>
+        </nav>
+
+        {/* Right side */}
+        <div className="flex items-center gap-2">
+          <a
+            href="#contact"
+            onClick={(e) => scrollTo(e, "#contact")}
+            className="hidden md:inline-flex btn-primary !px-4 !py-2 text-sm"
           >
-            KV
-          </motion.a>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <motion.a
-                key={item.name}
-                href={item.href}
-                onClick={(e) => scrollToSection(e, item.href)}
-                className="text-gray-700 dark:text-gray-300 hover:text-primary-600 
-                         dark:hover:text-primary-400 transition-colors duration-300"
-                whileHover={{ y: -2 }}
-              >
-                {item.name}
-              </motion.a>
-            ))}
-            <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center space-x-4">
-            <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-gray-700 dark:text-gray-300"
-              aria-label="Toggle menu"
-            >
-              {isMobileMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-            </button>
-          </div>
+            Hire me
+          </a>
+          <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+          <button
+            onClick={() => setIsMobileMenuOpen((s) => !s)}
+            className="md:hidden w-10 h-10 flex items-center justify-center rounded-lg border border-ink-200 dark:border-ink-800 bg-white/70 dark:bg-ink-900/70 text-ink-700 dark:text-ink-200"
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? <FaTimes size={18} /> : <FaBars size={18} />}
+          </button>
         </div>
+      </div>
 
-        {/* Mobile Navigation */}
+      {/* Mobile menu */}
+      <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden mt-4 pb-4"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="md:hidden container mt-3"
           >
-            {navItems.map((item) => (
+            <div className="glass rounded-2xl p-3 flex flex-col gap-1 shadow-soft">
+              {navItems.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  onClick={(e) => scrollTo(e, item.href)}
+                  className={`px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                    active === item.href
+                      ? "bg-primary-500/10 text-primary-600 dark:text-primary-400"
+                      : "text-ink-700 dark:text-ink-200 hover:bg-ink-100 dark:hover:bg-ink-800"
+                  }`}
+                >
+                  {item.name}
+                </a>
+              ))}
               <a
-                key={item.name}
-                href={item.href}
-                onClick={(e) => scrollToSection(e, item.href)}
-                className="block py-2 text-gray-700 dark:text-gray-300 
-                         hover:text-primary-600 dark:hover:text-primary-400"
+                href="#contact"
+                onClick={(e) => scrollTo(e, "#contact")}
+                className="btn-primary mt-1 justify-center"
               >
-                {item.name}
+                Hire me
               </a>
-            ))}
+            </div>
           </motion.div>
         )}
-      </nav>
+      </AnimatePresence>
     </motion.header>
   );
 };

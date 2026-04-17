@@ -1,114 +1,94 @@
 import { motion } from "framer-motion";
 import {
-  FaHeart,
   FaGithub,
   FaLinkedin,
   FaWhatsapp,
   FaEnvelope,
+  FaArrowUp,
 } from "react-icons/fa";
 import { socialLinks } from "../data/portfolioData";
+import Logo from "./Logo";
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const year = new Date().getFullYear();
+
+  const social = [
+    { Icon: FaGithub, href: socialLinks.github, label: "GitHub" },
+    { Icon: FaLinkedin, href: socialLinks.linkedin, label: "LinkedIn" },
+    { Icon: FaWhatsapp, href: socialLinks.whatsapp, label: "WhatsApp" },
+    { Icon: FaEnvelope, href: socialLinks.email, label: "Email" },
+  ];
 
   return (
-    <footer className="bg-gray-900 dark:bg-black text-white py-8 sm:py-12 px-4 no-print">
-      <div className="container mx-auto max-w-6xl">
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mb-6 sm:mb-8">
-          {/* About */}
-          <div className="sm:col-span-2 md:col-span-1">
-            <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">
-              Kethan Vemuri
-            </h3>
-            <p className="text-sm sm:text-base text-gray-400">
-              Full Stack Developer & DevOps Engineer passionate about building
-              scalable applications and modern web solutions.
+    <footer className="relative border-t border-ink-200 dark:border-ink-800 bg-white dark:bg-ink-950 no-print">
+      <div className="absolute inset-0 bg-dotgrid opacity-30 mask-radial-fade pointer-events-none" />
+      <div className="container relative z-10 py-10 sm:py-12">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 mb-8">
+          <div className="md:col-span-1">
+            <a href="#top" className="inline-flex items-center gap-2.5 mb-3">
+              <Logo size="md" />
+              <span className="font-display font-bold text-lg text-ink-900 dark:text-white">
+                kethan<span className="text-primary-500">.</span>dev
+              </span>
+            </a>
+            <p className="text-sm text-muted leading-relaxed max-w-xs">
+              Full Stack Developer &amp; DevOps Engineer building scalable, modern
+              web platforms.
             </p>
           </div>
 
-          {/* Quick Links */}
           <div>
-            <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">
-              Quick Links
-            </h3>
-            <ul className="space-y-1.5 sm:space-y-2">
-              {[
-                "About",
-                "Experience",
-                "Skills",
-                "Projects",
-                "Education",
-                "Contact",
-              ].map((item) => (
-                <li key={item}>
+            <p className="text-[11px] font-mono uppercase tracking-widest text-muted mb-3">
+              Navigate
+            </p>
+            <ul className="grid grid-cols-2 gap-1.5">
+              {["About", "Experience", "Skills", "Projects", "Education", "Contact"].map((i) => (
+                <li key={i}>
                   <a
-                    href={`#${item.toLowerCase()}`}
-                    className="text-sm sm:text-base text-gray-400 hover:text-primary-400 transition-colors"
+                    href={`#${i.toLowerCase()}`}
+                    className="text-sm text-ink-600 dark:text-ink-300 hover:text-primary-500 transition-colors"
                   >
-                    {item}
+                    {i}
                   </a>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Social Links */}
           <div>
-            <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">
+            <p className="text-[11px] font-mono uppercase tracking-widest text-muted mb-3">
               Connect
-            </h3>
-            <div className="flex gap-3 sm:gap-4">
-              <motion.a
-                href={socialLinks.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.2, y: -5 }}
-                className="text-gray-400 hover:text-white transition-colors"
-                aria-label="GitHub"
-              >
-                <FaGithub size={24} className="sm:text-[28px]" />
-              </motion.a>
-              <motion.a
-                href={socialLinks.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.2, y: -5 }}
-                className="text-gray-400 hover:text-blue-400 transition-colors"
-                aria-label="LinkedIn"
-              >
-                <FaLinkedin size={24} className="sm:text-[28px]" />
-              </motion.a>
-              <motion.a
-                href={socialLinks.whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.2, y: -5 }}
-                className="text-gray-400 hover:text-green-400 transition-colors"
-                aria-label="WhatsApp"
-              >
-                <FaWhatsapp size={24} className="sm:text-[28px]" />
-              </motion.a>
-              <motion.a
-                href={socialLinks.email}
-                whileHover={{ scale: 1.2, y: -5 }}
-                className="text-gray-400 hover:text-red-400 transition-colors"
-                aria-label="Email"
-              >
-                <FaEnvelope size={24} className="sm:text-[28px]" />
-              </motion.a>
+            </p>
+            <div className="flex gap-2">
+              {social.map(({ Icon, href, label }) => (
+                <motion.a
+                  key={label}
+                  href={href}
+                  target={href?.startsWith("http") ? "_blank" : undefined}
+                  rel="noopener noreferrer"
+                  whileHover={{ y: -2 }}
+                  aria-label={label}
+                  className="w-10 h-10 flex items-center justify-center rounded-lg border border-ink-200 dark:border-ink-800 text-ink-700 dark:text-ink-200 hover:text-primary-500 hover:border-primary-400/60 transition-colors"
+                >
+                  <Icon size={16} />
+                </motion.a>
+              ))}
             </div>
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="border-t border-gray-800 pt-6 sm:pt-8 text-center">
-          <p className="text-xs sm:text-sm text-gray-400 flex flex-wrap items-center justify-center gap-2">
-            <span>© {currentYear} Kethan Vemuri.</span>
-            <span className="flex items-center gap-2">
-              Built with <FaHeart className="text-red-500" /> using React &
-              Tailwind CSS
-            </span>
+        <div className="divider mb-6" />
+
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-muted font-mono">
+            © {year} Kethan Vemuri · Crafted with React, Tailwind &amp; care.
           </p>
+          <a
+            href="#top"
+            className="inline-flex items-center gap-2 text-xs font-mono text-muted hover:text-primary-500 transition-colors"
+          >
+            Back to top <FaArrowUp size={10} />
+          </a>
         </div>
       </div>
     </footer>
