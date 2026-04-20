@@ -167,10 +167,11 @@ export const education = [
 ];
 
 export const achievements = [
-  "Successfully migrated legacy Java applications to modern React.js architecture",
-  "Implemented automated CI/CD pipelines reducing deployment time by 60%",
+  "Successfully migrated legacy Java applications to modern Vue.js architecture",
+  "Implemented automated CI/CD pipelines reducing deployment time by 78%",
   "Led containerization initiatives using Docker and Kubernetes for improved scalability",
-  "Achieved 40%+ productivity improvement through AI-assisted development and prompt engineering",
+  "Achieved 90%+ productivity improvement through AI-assisted development and prompt engineering",
+  "Built Windows desktop applications and background services for enterprise automation workflows",
   "Mentored junior developers and conducted technical reviews for code quality assurance",
 ];
 
