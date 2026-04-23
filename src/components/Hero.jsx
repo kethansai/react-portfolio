@@ -9,6 +9,7 @@ import {
 } from "react-icons/fa";
 import { HiSparkles } from "react-icons/hi2";
 import { personalInfo, socialLinks } from "../data/portfolioData";
+import { generateResumePdf } from "../utils/generateResume";
 
 const careerStart = new Date("2020-02-01");
 const years = (
@@ -76,7 +77,14 @@ const TerminalCard = () => (
 );
 
 const Hero = () => {
-  const handlePrint = () => window.print();
+  const handlePrint = () => {
+    try {
+      generateResumePdf();
+    } catch (err) {
+      console.error("Resume generation failed, falling back to print", err);
+      window.print();
+    }
+  };
 
   return (
     <section
